@@ -1,0 +1,12 @@
+#Create a new systemd-entry with "sudo nano /etc/systemd/system/mqttShutdown.service"
+
+[Unit]
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/automationScripts/mqttShutdown.py
+
+[Install]
+WantedBy=multi-user.target
