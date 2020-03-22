@@ -1,0 +1,20 @@
+#Create a new systemd-entry with "sudo nano /etc/systemd/system/mqttShutdown.service"
+#This entry has to contain: 
+
+[Unit]
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/pi/automationScripts/mqttShutdown.py
+
+[Install]
+WantedBy=multi-user.target
+
+
+#Save this file
+#Then execute following commands:
+#Reload systemd-daemon "sudo systemd daemon-reload"
+#To start this service during the next boot: "sudo systemd enable mqttShutdown.service"
+#To start this service immediatly: "sudo systemd start mqttShutdown.service"
