@@ -11,26 +11,26 @@ Open the ___wpa_supplicant.conf___ and replace the SSID and the password.
 
 ## First login
 Open a CMD and type "ssh pi@192.168.0.???" and enter the password  
-Create a folder called ___.ssh___ using
+Create a folder called ___.ssh___ and there create a file called ___authorized_keys___   
 ```mkdir .shh```  
 ```cd .shh```  
 ```nano authorized_keys```  
-Copy yout public ssh-key into this file. Then save and close it. Now ssh-login without password works.
+Copy your public ssh-key into this file. Then save and close it. Now ssh-login without password works.
 
 ## Important scripts
-Go to the home directory using and create a folder called ___automationScripts___:
+Go to the home directory using and create a folder called ___automationScripts___:  
 ```cd ```  
 ```mkdir automationScripts```  
 ```cd automationScripts```  
 Create the according python files using the names from the files in ***pi/automationScripts***:  
 ```nano filename.py```   
-Copy the content into the file. Save and close it. Repeat it for all the scripts.
+Paste the content from the python-files from the repo into the local files. Save and close it. Repeat it for all the scripts.
 
 ## Installing the required programs
-First update and upgrade the system using
+First update and upgrade the system using  
 ```sudo apt-get update```  
 ```sudo apt-get upgrade```  
-Then install mosquitto and pip
+Then install mosquitto and pip-package  
 ```sudo apt-get install mosquitto mosquitto-clients python-pip```  
 Next, install the paho-mqtt python library globally  
 ```sudo -H pip install paho-mqtt```  
@@ -39,7 +39,7 @@ Next, install the paho-mqtt python library globally
 To create a new systemd entry just enter the following command:  
 ```sudo nano /etc/systemd/system/mqttShutdown.service```
 Copy and paste the content from ***mqttShudown_systemd.txt***
-Then save this file and execute following commands:
+Then save this file and execute following commands:  
 ```sudo systemd daemon-reload```  
 ```sudo systemd enable mqttShutdown.service```  
 ```sudo systemd start mqttShutdown.service```
